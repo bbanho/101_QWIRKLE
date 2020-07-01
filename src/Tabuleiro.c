@@ -1,4 +1,4 @@
-#include "header/Tabuleiro.h"
+#include "Tabuleiro.h"
 
 Tab newTab(int h, int w){
   Tab t;
