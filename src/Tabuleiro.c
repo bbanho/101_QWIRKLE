@@ -3,12 +3,27 @@
 Tab newTab(int h, int w){
   Tab t;
   t.w=w;t.h=h;
+  t.m=(char***)malloc(h*sizeof(char**));
   for(int i=0;i<h;i++){
-    t.m=(char**) malloc(h*sizeof(char*));
+    t.m[i]=(char**)malloc(w*sizeof(char*));
     for(int j=0;j<w;j++){
-      t.m[i]=(char *) calloc(w,w*sizeof(char));
+       t.m[i][j]=(char*)calloc(2,2*sizeof(char));
     }
   }
-
   return t;
+}
+
+int setTab(Tab *t, int x, int y, char v[2]){
+  strcpy(t->m[x][y],v);
+//  t->m[1][1]="aa\0";
+  return 0;
+}
+
+void printTab(Tab t){
+  for(int i=0;i<t.h;i++){
+    for(int j=0;j<t.w;j++){
+      printf("%3s",t.m[i][j]);
+    }
+    puts("");
+  }
 }

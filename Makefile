@@ -14,10 +14,8 @@ cc_flags=-Wall \
 				 -W \
 				 -pedantic
 
-debug:
-	$(info $(c_source), $(h_source), $(obj))
 
-all: objdir $(prog)
+all: clean objdir $(prog) run
 
 objdir:
 	@ mkdir object
@@ -27,10 +25,15 @@ $(prog): $(obj)
 
 ./object/%.o: ./src/%.c ./src/%.h
 	gcc $< $(cc_flags) -o $@
-
 ./object/main.o: ./src/main.c $(h_source)
 	gcc $< $(cc_flags) -o $@
 
-
 clean:
 	@ rm -rf ./object ./$(prog)
+
+run: 
+	@ ./$(prog)
+
+debug:
+	$(info $(c_source), $(h_source), $(obj))
+
