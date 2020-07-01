@@ -11,27 +11,26 @@ Implementaçao do jogo Qwirkle em C
 > Ou seja, haverao 36 combinaçoes, que no total de 108 peças indica que
 haverao grupos de 3 peças equipolentes.
 
-## Do código
+## Da estrutura
 
 O código foi implementado seguindo o grau de maior para menor abstraçao, seguindo
 um modelo top-down, favorecendo o desenvolvimento conforme surjam necessidades.
 
-> Descrever as relaçoes entidade-entidade no ambito estrutural
+O primeiro passo fora descrever as relaçoes entidade-entidade no ambito estrutural.
+Ambas as maiores entidades compartilham do mesmo nivel de abstraçao,
+ havendo como ocorrer interaçao direta entre elas. Por exemplo
 
-Tabuleiro | Peças | Jogadores           |
-----------------------------------------|
-Ambos compartilham do mesmo nivel de    |
-abstraçao, podendo um jogador manipular |
-o tabuleiro por meio das peças          |
+> jogador <-> montante 
+> jogador -> tabuleiro
 
-Portanto
+O intermediador dessas relaçoes serao trocas de peças pelas vias
+* transferir peças ao tabuleiro, via regra
+* trocar sua mao por peças do montante
 
-|       |    | Jogador 1 |
-| Peças | -> | Jogador 2 | -> | Tabuleiro |
-|       |    | Jogador 3 |
+> Desta maneira, podemos aninhar corretamente sua estrutura para manter a dinamica de
+  desenvolvimento do programa
 
-Também é possível ocorrer um fluxo de exceçao, sendo ele
+# Do código
 
-> Jogador -> Peças -> Jogador
+  TODO
 
-Caso o jogador desejar trocar sua mao.
