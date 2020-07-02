@@ -11,6 +11,8 @@ int main(){
 
   // game loop
   while(!winner){
+    setTab(&t,0,2,"B5");
+    setTab(&t,0,1,"B5");
     setTab(&t,1,1,"E1");
     setTab(&t,2,2,"A2");
     printTab(t);

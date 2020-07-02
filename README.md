@@ -21,6 +21,7 @@ Ambas as maiores entidades compartilham do mesmo nivel de abstraçao,
  havendo como ocorrer interaçao direta entre elas. Por exemplo
 
 > jogador <-> montante 
+
 > jogador -> tabuleiro
 
 O intermediador dessas relaçoes serao trocas de peças pelas vias

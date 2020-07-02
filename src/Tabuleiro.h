@@ -2,18 +2,20 @@
 #include <string.h>
 #include <stdio.h>
 
-// Relativo a estrutura do game
-// 6 formas e 6 cores
+// Relativo a topologia do game
+// Entidade apenas a ser manipulada pelos jogadores
+// (aqui nao se consideram regras, apenas a manipulacao do tabuleiro)
 typedef struct {
-  // tamanho do tabuleiro && conteudo
-  // peças restantes implicitas
+  // pecas, vetor de pares de chars
   char ***m;
+  // tamanho do tabuleiro
   int h,w;
 } Tab;
 
+// inicializa
 Tab newTab(int h, int w);
 
-// Relativo a manipulaçao
+// manipula
 // recebe tabuleiro, posicao e peca, retorna resultado da operacao
 int setTab(Tab *t, int x, int y, char v[2]);
 
