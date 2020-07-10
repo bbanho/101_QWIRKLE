@@ -2,11 +2,10 @@
 
 Monte newMonte(){
   Monte m;
-  m.n=0;
+  m.n=108;
   for(int i=0;i<6;i++){
     for(int j=0;j<6;j++){
       m.p[i][j]=3;
-      m.n+=3;
     }
   }
   return m;

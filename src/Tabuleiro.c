@@ -12,9 +12,11 @@ void translate(int *inp,char *outp){
 Tab newTab(int h, int w){
   Tab t;
   t.w=w;t.h=h;
-  *(t.p)=(int **) malloc(h*sizeof(int*));
+  t.p=(int***) malloc(w*sizeof(int**));
   for(int i=0;i<h;i++){
-    (t.p)[i]=(int*) calloc(w,w*sizeof(int));
+    t.p[i]=(int**) malloc(h*sizeof(int*));
+    for(int j=0;j<2;j++) 
+      t.p[i][j]=(int*)calloc(2,2*sizeof(int));
   }
   return t;
 }
@@ -36,7 +38,7 @@ int setTab(Tab *t,int x,int y,int p[6][6]){
 
   if((x+6)-((t->w)>=0)){
     // realoca 6 pcs a direita => aumentar tamanho das linhas
-     *(t->p)=(int**)realloc(t->p, ((t->h)+6)*sizeof(int*));
+     *t->p=(int**)realloc(t->p, ((t->h)+6)*sizeof(int*));
      t->h+=6;
      for(int i=0;i<(t->w)+6;i++){
        t->p[i]=(int *)realloc(t->p, ((t->w)+6)*sizeof(int));
@@ -61,7 +63,7 @@ int setTab(Tab *t,int x,int y,int p[6][6]){
 }
 
 
-  void printTab(Tab t){
+void printTab(Tab t){
   char res[2];
   for(int i=0;i<t.h;i++){
     for(int j=0;j<t.w;j++){

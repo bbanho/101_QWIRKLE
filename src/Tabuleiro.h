@@ -8,20 +8,15 @@
 // Re lativo a topologia do game
 // Entidade apenas a ser manipulada pelos jogadores
 // (aqui nao se consideram regras, apenas a manipulacao do tabuleiro)
-
 typedef struct {
-  // matriz de pecas
-  int **p[2];
-  // tamanho do tabuleiro
+//  int **p[2];
+  int ***p;
   int h,w;
 } Tab;
 
 Tab newTab(int h, int w);
-
 // manipula
 // recebe tabuleiro, posicao e peca, retorna resultado da operacao
 int setTab(Tab *t,int x,int y,int p[6][6]);
-
 void printTab(Tab t);
-
 void translate(int *inp, char *outp);
