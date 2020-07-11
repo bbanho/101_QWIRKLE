@@ -11,13 +11,16 @@ int main(){
   // Inicializa monte
   Monte monte = newMonte();
 
-  int h[6][6] = {0};
-  h[2][3]=1;
-  h[2][4]=1;
+  int h[2] = {0};
+  h[0]=6;
+  h[1]=1;
+  //h[2][3]=1;
+  //h[2][4]=1;
 
   // game loop
   while(!winner){
     // seleciona player
+    setTab(&t,4,4,h);
     printTab(t);
 
     winner=1;

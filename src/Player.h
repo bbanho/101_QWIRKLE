@@ -7,7 +7,7 @@
 typedef struct {
   int id;
   char nome[60];
-  Monte m;
+  int *p[2];
 } Player;
 
-Player newPlayer(int id,char n[60],char ****pec);
+Player newPlayer(int id,char n[60],char **pec);
