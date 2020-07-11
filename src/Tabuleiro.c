@@ -13,15 +13,15 @@ void translate(int *inp,char *outp){
   }
 }
 
-Tab newTab(int h, int w){
+Tab newTab(int w, int h){
   Tab t;
   t.w=w;t.h=h;
-  t.p=(int***) malloc(h*sizeof(int**));
-  for(int i=0;i<h;i++){
-    t.p[i]=(int**) malloc(w*sizeof(int*));
-    for(int j=0;j<w;j++){ 
+  t.p=(int***) malloc(w*sizeof(int**));
+  for(int i=0;i<w;i++){
+    t.p[i]=(int**) malloc(h*sizeof(int*));
+    for(int j=0;j<h;j++){ 
       t.p[i][j]=(int*)malloc(2*sizeof(int));
-      for(int k=0;k<2;k++) t.p[i][j][k]=0;
+      for(int k=0;k<2;k++) t.p[i][j][k]=1;
     }
   }
   return t;
@@ -72,8 +72,8 @@ int setTab(Tab *t,int x,int y,int p[6][6]){
 
 void printTab(Tab t){
   char res[2];
-  for(int i=0;i<t.h;i++){
-    for(int j=0;j<t.w;j++){
+  for(int i=0;i<t.w;i++){
+    for(int j=0;j<t.h;j++){
       translate(t.p[i][j],res);
       printf("%2s ",res);
     }

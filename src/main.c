@@ -12,6 +12,9 @@ int main(){
   Monte monte = newMonte();
 
   int h[6][6] = {0};
+  h[2][3]=1;
+  h[2][4]=1;
+
   // game loop
   while(!winner){
     // seleciona player
