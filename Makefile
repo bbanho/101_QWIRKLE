@@ -15,7 +15,7 @@ cc_flags=-Wall \
 				 -pedantic
 
 
-all: clean objdir $(prog) run
+all: clean objdir $(prog)
 
 objdir:
 	@ mkdir object
@@ -34,6 +34,6 @@ clean:
 run: 
 	@ ./$(prog)
 
-debug:
-	$(info $(c_source), $(h_source), $(obj))
+debug: all
+	@ gdb ./$(prog)
 

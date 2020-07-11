@@ -5,18 +5,24 @@ void translate(int *inp,char *outp){
   char pcForma[6]={'A','B','C','D','E','F'};
   char pcNro[6]={'1','2','3','4','5','6'};
 
-  outp[0]=pcForma[inp[0]];
-  outp[1]=pcNro[inp[1]];
+  if(*inp){
+    outp[0]=pcForma[inp[0]];
+    outp[1]=pcNro[inp[1]];
+  } else {
+    outp="";
+  }
 }
 
 Tab newTab(int h, int w){
   Tab t;
   t.w=w;t.h=h;
-  t.p=(int***) malloc(w*sizeof(int**));
+  t.p=(int***) malloc(h*sizeof(int**));
   for(int i=0;i<h;i++){
-    t.p[i]=(int**) malloc(h*sizeof(int*));
-    for(int j=0;j<2;j++) 
-      t.p[i][j]=(int*)calloc(2,2*sizeof(int));
+    t.p[i]=(int**) malloc(w*sizeof(int*));
+    for(int j=0;j<w;j++){ 
+      t.p[i][j]=(int*)malloc(2*sizeof(int));
+      for(int k=0;k<2;k++) t.p[i][j][k]=0;
+    }
   }
   return t;
 }
@@ -37,11 +43,13 @@ int setTab(Tab *t,int x,int y,int p[6][6]){
   // seja a direita da peca
 
   if((x+6)-((t->w)>=0)){
-    // realoca 6 pcs a direita => aumentar tamanho das linhas
-     *t->p=(int**)realloc(t->p, ((t->h)+6)*sizeof(int*));
-     t->h+=6;
+    // realoca 6 pcs a direita-baixo
+     t->p=(int***)realloc(t->p, ((t->h)+6)*sizeof(int**));
      for(int i=0;i<(t->w)+6;i++){
-       t->p[i]=(int *)realloc(t->p, ((t->w)+6)*sizeof(int));
+       t->p[i]=(int **)realloc(t->p[i], ((t->w)+6)*sizeof(int*));
+       for(int j=0;j<(t->h)+6;j++){
+         t->p[i][j]=(int*) realloc(t->p[i][j], ((t->h)+6)*sizeof(int));
+       }
      }
      t->w+=6;
     //for(int i=0;i<(copia.h);i++){
@@ -61,7 +69,6 @@ int setTab(Tab *t,int x,int y,int p[6][6]){
   }
   return 0;
 }
-
 
 void printTab(Tab t){
   char res[2];

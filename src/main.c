@@ -7,7 +7,7 @@ int main(){
 
   // difne starting (zoros) tab
   // tab min é 3x3 p/ primeira jogada
-  Tab t = newTab(6,6);
+  Tab t = newTab(12,9);
   // Inicializa monte
   Monte monte = newMonte();
 
@@ -15,6 +15,7 @@ int main(){
   // game loop
   while(!winner){
     // seleciona player
+    printTab(t);
 
     winner=1;
   }
