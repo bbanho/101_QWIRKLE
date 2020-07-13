@@ -12,4 +12,4 @@ typedef struct {
 
 Player newPlayer(int id,char n[60]);
 void getPc(int *pc, Player *p,int pos);
-int putPc(Player *p,int pc[2],int pos);
+void putPc(Player *p,int pc[2],int pos);

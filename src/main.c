@@ -17,15 +17,36 @@ int main(){
 
   distribuiPeca(&monte,p,nPlayer);
 
-  int h[2] = {0};
   // game loop
   while(!winner){
     // seleciona player
     if(contPlayer==nPlayer) contPlayer=0;
-    scanf("%d %d",&h[0],&h[1]);
     
-    play(p,&monte,&t,5,5,1);
     printTab(t);
+
+    char trad[2];
+    puts("Sua mao");
+    for(int i=0;i<6;i++){
+      translate(p[contPlayer].p[i],trad);
+      printf("%2s ",trad);
+    }
+    puts("");
+
+    play(p,&monte,&t,2,2,1);
+    printTab(t);
+    puts("Sua mao");
+    for(int i=0;i<6;i++){
+      translate(p[contPlayer].p[i],trad);
+      printf("%2s ",trad);
+    }
+    puts("");
+
+    for(int i=0;i<6;i++){
+      for(int j=0;j<6;j++){
+        printf("%d ",monte.p[i][j]);
+      }
+      puts("");
+    }
 
     contPlayer=+1;
     winner=1;
