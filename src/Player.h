@@ -2,7 +2,8 @@
 #include "Monte.h"
 #define _MONTE
 #endif
-
+#include <string.h>
+#include <stdio.h>
 
 typedef struct {
   int id;int score;
@@ -13,3 +14,4 @@ typedef struct {
 Player newPlayer(int id,char n[60]);
 void getPc(int *pc, Player *p,int pos);
 void putPc(Player *p,int pc[2],int pos);
+void printMao(Player p);

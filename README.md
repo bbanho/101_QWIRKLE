@@ -10,14 +10,6 @@ Implementaçao do jogo Qwirkle em C
 
 > Ou seja, haverao 36 combinaçoes, que no total de 108 peças indica que haverao grupos de 3 peças equivalentes.
 
-### Regras
-
-  TODO 
-
-### Dinamica
-
-  TODO 
-
 ## Da estrutura
 
   O projeto foi desenvolvido conceituando os elementos do jogo de tal forma como objetos e
@@ -47,8 +39,4 @@ Implementaçao do jogo Qwirkle em C
 
 > Desta maneira, podemos aninhar corretamente sua estrutura para manter a dinamica de
   desenvolvimento do programa e evitar grandes reestruturaçoes de código.
-
-# Do código
-
-  TODO
 
