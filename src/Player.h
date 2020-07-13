@@ -5,9 +5,11 @@
 
 
 typedef struct {
-  int id;
+  int id;int score;
   char nome[60];
-  int *p[2];
+  int p[6][2];
 } Player;
 
-Player newPlayer(int id,char n[60],char **pec);
+Player newPlayer(int id,char n[60]);
+void getPc(int *pc, Player *p,int pos);
+int putPc(Player *p,int pc[2],int pos);

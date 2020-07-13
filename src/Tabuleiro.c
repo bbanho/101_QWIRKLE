@@ -28,50 +28,36 @@ Tab newTab(int w, int h){
   return t;
 }
 
-int setTab(Tab *t,int x,int y,int p[2]){
+Tab setTab(Tab *t,int x,int y,int p[2]){
   // copia tabuleiro
-  Tab copia = *t;
+  Tab tabnew = newTab((t->w)+6,(t->h)+6);
+  if(abs(x-(t->w))>6 || abs(y-(t->h))>6){
+    for(int i=0;i<t->w;i++){
+      for(int j=0;j<t->h;j++){
+        for(int k=0;k<2;k++){
+          tabnew.p[i+abs(x)][j+abs(y)][k]=t->p[i][j][k];
+        }
+      } 
+    }
+    for(int i=0;i<2;i++) tabnew.p[x+6][y+6][i]=p[i];
+  } else {
+    for(int i=0;i<t->w;i++){
+      for(int j=0;j<t->h;j++){
+         for(int k=0;k<2;k++){
+           tabnew.p[i][j][k]=t->p[i][j][k];
+           tabnew.p[x][y][k]=p[k];
+         }
+      }
+    }
+    for(int i=0;i<2;i++) tabnew.p[x][y][i]=p[i];
+  }
 
-  for(int i=0;i<2;i++) t->p[x][y][i]=p[i];
+  return tabnew;
+}
 
-  // realoca de acordo em ambas direçoes
-  // haverao dois casos na dir x e dois em y
-  // caso aumenta 6 linhas para baixo
-  
-  // caso deslocamento na horizontal positiva
-  // (x+6)-x_m representa o tamanho minimo para caber
-  // a proxima jogada
-  // para jogada à esquerda de uma peça
-  // a representacao torna-se -(x+6)-y_m
-  // portanto vale testar se (x+6) é positivo caso a jogada
-  // seja a direita da peca
-
-  //if((x+6)-((t->w)>=0)){
-  //  // realoca 6 pcs a direita-baixo
-  //   t->p=(int***)realloc(t->p, ((t->h)+6)*sizeof(int**));
-  //   for(int i=0;i<(t->w)+6;i++){
-  //     t->p[i]=(int **)realloc(t->p[i], ((t->w)+6)*sizeof(int*));
-  //     for(int j=0;j<(t->h)+6;j++){
-  //       t->p[i][j]=(int*) realloc(t->p[i][j], ((t->h)+6)*sizeof(int));
-  //     }
-  //   }
-  //   t->w+=6;
-  //  //for(int i=0;i<(copia.h);i++){
-  //  //  for(int j=0;j<copia.w;j++){
-  //  //    &(t->m[i][j])=copia.m[i][j];
-  //  //  }
-  //  //}
-  //} else {
-  //  // realoca 6 pcs a esqerda
-  //  for(int i=x;i<x+6;i++) t->p[i]=(int*)realloc(t->p[i], ((t->w)+6)*sizeof(int));
-  //  for(int i=0;i<(copia.h);i++){
-  //    for(int j=0;j<(copia.w);j++){
-  //      // deslocamento por +6
-  //      t->p[i][j+6]=copia.p[i][j];
-  //    }
-  //  }                                
-  //}
-  return 0;
+int *getTab(Tab *t, int x, int y){
+  if(x>t->w || y>t->h) return 0;
+  return t->p[x][y];
 }
 
 void printTab(Tab t){

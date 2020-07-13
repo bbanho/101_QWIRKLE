@@ -17,6 +17,7 @@ typedef struct {
 Tab newTab(int h, int w);
 // manipula
 // recebe tabuleiro, posicao e peca, retorna resultado da operacao
-int setTab(Tab *t,int x,int y,int p[2]);
+Tab setTab(Tab *t,int x,int y,int p[2]);
+int *getTab(Tab *t,int x,int y);
 void printTab(Tab t);
 void translate(int *inp, char *outp);
