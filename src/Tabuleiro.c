@@ -5,7 +5,7 @@ void translate(int *inp,char *outp){
   char pcForma[6]={'A','B','C','D','E','F'};
   char pcNro[6]={'1','2','3','4','5','6'};
 
-  if(*inp>0){
+  if(*inp>=0){
     outp[0]=pcForma[inp[0]];
     outp[1]=pcNro[inp[1]];
   } else {

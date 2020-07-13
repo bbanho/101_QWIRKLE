@@ -20,8 +20,6 @@ void getPc(int *pc, Player *p,int pos){
   } 
 }
 
-int putPc(Player *p,int pc[2],int pos){
-  if(p->p[pos+1][0]!=0) return 0;
+void putPc(Player *p,int pc[2],int pos){
   for(int i=0;i<2;i++) p->p[pos-1][i]=pc[i];
-  return 1;
 }
