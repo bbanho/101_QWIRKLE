@@ -14,7 +14,7 @@ Monte newMonte(){
 int addPc(Monte *m,int forma,int cor,int qtd){
   if(m->p[forma][cor]+qtd>3) return 0; // erro
   m->p[forma][cor]+=qtd;
-  m->n-=qtd;
+  m->n+=qtd;
   return 1;
 }
 int rmPc(Monte *m,int forma,int cor,int qtd){

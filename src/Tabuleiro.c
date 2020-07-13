@@ -2,10 +2,10 @@
 
 
 void translate(int *inp,char *outp){
-  char pcForma[7]={'*','A','B','C','D','E','F'};
-  char pcNro[7]={'*','1','2','3','4','5','6'};
+  char pcForma[6]={'A','B','C','D','E','F'};
+  char pcNro[6]={'1','2','3','4','5','6'};
 
-  if(*inp!=0){
+  if(*inp>0){
     outp[0]=pcForma[inp[0]];
     outp[1]=pcNro[inp[1]];
   } else {
@@ -22,7 +22,7 @@ Tab newTab(int w, int h){
     t.p[i]=(int**) malloc(h*sizeof(int*));
     for(int j=0;j<h;j++){ 
       t.p[i][j]=(int*)malloc(2*sizeof(int));
-      for(int k=0;k<2;k++) t.p[i][j][k]=0;
+      for(int k=0;k<2;k++) t.p[i][j][k]=-1;
     }
   }
   return t;
@@ -63,7 +63,9 @@ int *getTab(Tab *t, int x, int y){
 void printTab(Tab t){
   char res[2] = "";
   for(int i=0;i<t.w;i++){
+    printf("%d.",i);
     for(int j=0;j<t.h;j++){
+      if(i==0) printf("%d",j);
     //  res[0]=0;res[1]=0;
       translate(t.p[i][j],res);
       printf("%2s ",res);

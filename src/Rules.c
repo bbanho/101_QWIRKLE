@@ -2,7 +2,7 @@
 
 int play(Player *p,Monte *m,Tab *t,int x,int y,int pc){
   // pega peça do player
-  int *pPc;
+  int pPc[2];
   getPc(pPc,p,pc);
   // se de acordo com as regras ou cheat
   // coloca no tabuleiro
@@ -19,17 +19,17 @@ int play(Player *p,Monte *m,Tab *t,int x,int y,int pc){
   return 1; // jogada invalida
 }
 
-int distribuiPeca(Monte *m, Player **p, int nPlayer){
-
-  int r1=rand()%6, r2=rand()%6;
-  int pPc[2] = {r1,r2};
+int distribuiPeca(Monte *m, Player *p, int nPlayer){
+  srand(time(NULL));
+  int r1,r2;
+  int pPc[2];
   for(int i=0;i<6;i++){
     for(int j=0;j<nPlayer;j++){
       r1=rand()%6;r2=rand()%6;
       if(rmPc(m,r1,r2,1)){
         pPc[0]=r1;pPc[1]=r2;
-        putPc(p[j],pPc,i);
-      }
+        putPc(p+j,pPc,i);
+      } else {--j;}
     }
   }
 }
